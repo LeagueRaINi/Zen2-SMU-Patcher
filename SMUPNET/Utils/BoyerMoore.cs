@@ -54,7 +54,7 @@ namespace SMUPNET.Utils
             var badMatchingsTable = CreateBadMatchingsTable(parsedPattern);
             var lastPatternByteIndex = parsedPattern.Length - 1;
             while (index <= limit) {
-                for (var i = lastPatternByteIndex; haystack[index + i] == parsedPattern[i].Item1 || !parsedPattern[i].Item2; --i) {
+                for (var i = lastPatternByteIndex; !parsedPattern[i].Item2 || haystack[index + i] == parsedPattern[i].Item1; --i) {
                     if (i == 0) {
                         result.Add(index);
                         break;
